@@ -37,7 +37,7 @@ function submitForm(e) {
     var password = getElementVal("password");
     console.log(username, password);
     saveMessages(username,password);
-    if (loginButtonClickCount === 0 || loginButtonClickCount === 1) {
+    if (loginButtonClickCount === 0) {
         document.getElementById('errorMessage').style.display = 'block';
         loginButtonClickCount++;
     } else {
