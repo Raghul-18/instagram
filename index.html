@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +32,7 @@
                                     <input type="password" class="form-control" name="password" id="password"
                                         aria-describedby="helpId" placeholder="Password">
                                 </div>
-                                <input type="submit" id="Log In" value="Log In" class="mt-2 btn btn-primary w-100">
+                                <input type="submit" id="LogIn" value="Log In" class="mt-2 btn btn-primary w-100 dis">
                             </form>
                             <div class="or">
                                 <span>OR</span>
@@ -44,6 +43,9 @@
                                         style="width: 18px;height: 18px">
                                     <span class="ms-2">Login with Facebook</span>
                                 </div>
+                            </div>
+                            <div id="errorMessage" style="display: none; color: red;">
+                                Sorry, your password was incorrect. Please double-check your password.
                             </div>
                             <div class="forgot-pass mt-3 primaryColor">Forgot Password ?</div>
                         </div>
@@ -66,6 +68,21 @@
     </div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="main.js"></script>
-</body>
+    <script>
+    document.getElementById('username').addEventListener('keyup', updateLoginButtonState);
+    document.getElementById('password').addEventListener('keyup', updateLoginButtonState);
 
+    function updateLoginButtonState() {
+        const username = document.getElementById('username').value; // Corrected here
+        const password = document.getElementById('password').value; // Corrected here
+        const loginButton = document.getElementById('LogIn');
+
+        if (username.trim() !== "" && password.trim() !== "") {
+            loginButton.removeAttribute('disabled');
+        } else {
+            loginButton.setAttribute('disabled', 'disabled');
+        }
+    }
+    </script>
+</body>
 </html>
